@@ -114,7 +114,7 @@ function Contact() {
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-3.5 font-semibold text-primary-foreground"
           >
             <MessageCircle className="h-4 w-4" />
-            Send Enquiry On WhatsApp
+            Send Enquiry
           </button>
         </form>
         <aside className="space-y-4">

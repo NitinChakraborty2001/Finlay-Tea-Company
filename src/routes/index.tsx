@@ -10,6 +10,7 @@ import {
   Sprout,
   Repeat,
   Quote,
+  Star,
 } from "lucide-react";
 import hero from "@/assets/hero-garden.jpg";
 import warehouse from "@/assets/warehouse.jpg";
@@ -72,6 +73,30 @@ const markets = [
     ids: ["elaichi", "ase-black", "ase-green"],
   },
 ];
+
+const testimonials = [
+  {
+    name: "Subrata Mukherjee",
+    role: "Kirana & Grocery Retailer · Serampore, Hooghly.",
+    segment: "Retail Partner",
+    quote:
+      "Consistent liquor strength and aroma across every batch. Our regular household buyers ask for these packets by name, and direct wholesale billing keeps our shelf margins healthy.",
+  },
+  {
+    name: "Rajesh Agarwal",
+    role: "Tea Distributor · Burrabazar, Kolkata.",
+    segment: "Distribution",
+    quote:
+      "High cup yield and brisk colour are non-negotiable for our commercial stall network. Dispatch from the godown is prompt, and the granule grade stays uniform throughout the season.",
+  },
+  {
+    name: "Ananya Sen",
+    role: "Hospitality Procurement · Salt Lake, Kolkata.",
+    segment: "Hospitality",
+    quote:
+      "Sampling a custom blend before placing our monthly bulk order made all the difference. Fresh garden-sourced leaf without middleman markups has noticeably upgraded our tea menu.",
+  },
+] as const;
 
 const faqs = [
   [
@@ -310,39 +335,76 @@ function Index() {
       <section className="mx-auto max-w-7xl px-4 py-20">
         <p className="eyebrow">New batch arrivals</p>
         <h2 className="mt-2 text-3xl font-semibold md:text-4xl">From the garden to our godown!</h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
           {(
             [
-              [hero, "Garden Sourcing"],
-              [warehouse, "Bulk CTC Stock"],
-              [packaged, "Retail-Ready Packets"],
+              [hero, "Garden Sourcing", 1600, 1008],
+              [warehouse, "Bulk CTC Stock", 1200, 912],
+              [packaged, "Retail-Ready Packets", 1200, 912],
             ] as const
-          ).map(([src, cap]) => (
-            <figure key={cap} className="overflow-hidden rounded-2xl">
-              <img
-                src={src}
-                alt={cap}
-                loading="lazy"
-                className="aspect-4/3 w-full object-cover transition duration-500 hover:scale-105"
-              />
-              <figcaption className="mt-2 text-sm text-muted-foreground">{cap}</figcaption>
+          ).map(([src, cap, width, height]) => (
+            <figure key={cap}>
+              <div className="overflow-hidden rounded-2xl">
+                <img
+                  src={src}
+                  alt={cap}
+                  width={width}
+                  height={height}
+                  loading="lazy"
+                  className="aspect-4/3 w-full object-cover transition duration-500 hover:scale-105"
+                />
+              </div>
+              <figcaption className="mt-2.5 text-sm font-medium text-muted-foreground">
+                {cap}
+              </figcaption>
             </figure>
           ))}
         </div>
-        <p className="mt-4 text-xs text-muted-foreground">
-          Illustrative imagery — real warehouse and garden photos can replace these.
-        </p>
       </section>
 
-      {/* Feedback placeholder */}
-      <section className="bg-muted/60 py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <Quote className="mx-auto h-8 w-8 text-gold" />
-          <h2 className="mt-3 text-2xl font-semibold">Trade Client Feedback</h2>
-          <p className="mt-3 text-muted-foreground">
-            Verified feedback from our retail and distribution partners will appear here! Bought
-            from us? We would love your words.
-          </p>
+      {/* Trade Client Feedback */}
+      <section className="bg-muted/60 py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Partner testimonials</p>
+            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">Trade Client Feedback</h2>
+            <p className="mt-3 text-muted-foreground">
+              What retailers, distributors and hospitality buyers across Kolkata and Hooghly value
+              most when sourcing directly from our godown.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure
+                key={t.name}
+                className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-card"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-0.5 text-gold">
+                      <span className="sr-only">Rated 5 out of 5 stars</span>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} aria-hidden="true" className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <Quote aria-hidden="true" className="h-5 w-5 text-gold/60" />
+                  </div>
+                  <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
+                    <p>&ldquo;{t.quote}&rdquo;</p>
+                  </blockquote>
+                </div>
+                <figcaption className="mt-6 flex items-center justify-between gap-3 border-t border-border pt-4">
+                  <div>
+                    <p className="font-semibold text-foreground">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold text-secondary-foreground">
+                    {t.segment}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 

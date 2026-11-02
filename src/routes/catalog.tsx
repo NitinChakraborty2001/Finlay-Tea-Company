@@ -93,7 +93,7 @@ function Catalog() {
                 <tr key={p.id} className="border-t border-border">
                   <td className="p-3 font-semibold">{p.name}</td>
                   <td className="p-3">{p.unit}</td>
-                  <td className="p-3">{p.price !== null ? formatINR(p.price) : "On request"}</td>
+                  <td className="p-3">{p.price !== null ? formatINR(p.price) : "On Request"}</td>
                   <td className="p-3 text-muted-foreground">
                     {p.pricePerKg !== null ? formatINR(p.pricePerKg) : "—"}
                   </td>

@@ -103,7 +103,7 @@ function Calculator() {
             className="mt-5 inline-flex items-center gap-2 rounded-full bg-whatsapp px-5 py-3 font-semibold text-primary-foreground"
           >
             <MessageCircle className="h-4 w-4" />
-            Confirm This Rate On WhatsApp
+            Confirm This Rate
           </a>
         </div>
       </section>
