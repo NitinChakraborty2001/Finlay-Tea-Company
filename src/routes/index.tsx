@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
         content:
           "Bulk Assam, Darjeeling and CTC tea direct from gardens. Trusted tea trader & wholesaler for West Bengal since 2017. WhatsApp for live rates.",
       },
-      { property: "og:title", content: "Finlay Tea Company — Direct-from-Garden Tea Wholesaler" },
+      { property: "og:title", content: "Finlay Tea Company — Direct-From-Garden Tea Wholesaler!" },
       {
         property: "og:description",
         content:
